@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  livekit:
+    image: livekit/livekit-server:latest
+    command: ["--dev", "--bind", "0.0.0.0"]
+    ports:
+      - "7880:7880"  # HTTP port for REST API
+      - "7881:7881"  # WebSocket port for signaling
+    restart: unless-stopped
