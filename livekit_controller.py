@@ -42,7 +42,7 @@ class LiveKitController:
                     room=room_name,
                     can_publish=False,
                     can_subscribe=True,
-                    can_publish_data=False,
+                    can_publish_data=True,
                     hidden=True,
                 )
             )
@@ -60,8 +60,8 @@ class LiveKitController:
                     room_join=True,
                     room=room_name,
                     can_publish=True,
-                    can_subscribe=False,
-                    can_publish_data=False
+                    can_subscribe=True,
+                    can_publish_data=True
                 )
             )
             .to_jwt()
@@ -75,9 +75,7 @@ async def main():
     lkc = LiveKitController()
 
     # Create a room
-    room_info = await lkc.create_room("my-room")
-    print("Room info:")
-    print(room_info)
+    await lkc.create_room("my-room")
 
     # List rooms
     rooms = await lkc.list_rooms()
